@@ -1,0 +1,17 @@
+################################################################################
+# Vulnerabilities                                                              #
+#                                                                              #
+# Description: This file describes the vulnerabilities for each stage.         #
+#                                                                              #
+# Authors: Pengcheng Xu <pengchexu@gmail.com>                                  #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+1. There is no receiver window, which means the receiver window size is only one, 
+if a packet is lost during transmission, all the following packet which has been 
+sent but not been acked, need to be retransmit by the sender.
+
+2. Gradually, the data chunk will be loaded into memory if the node continues to 
+act as data provider. There is no mechanism to release the data, therefore this 
+node might eats up all the memory if the file is very large.

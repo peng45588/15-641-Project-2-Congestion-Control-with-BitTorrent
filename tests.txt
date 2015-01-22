@@ -1,0 +1,42 @@
+################################################################################
+# TESTS                                                                        #
+#                                                                              #
+# Description: This file contains test methods for project2                    #
+#                                                                              #
+# Authors: Pengcheng Xu <pengchexu@gmail.com>                                  #
+#                                                                              #
+################################################################################
+
+1. detailed implementation of print_* function
+Before write function on a struct, including chunk, different kind of packet, 
+connection, and job, a print function which print out readable text, is written 
+for debug or log.
+
+2. basic connection test
+After setting up network, enter GET command in either terminal, observe the 
+packet info printed out. Use echo "GET * | ./peer *" in the make file to avoid
+repeatedly type in by hand.
+
+3. random loss test
+Set spiffy environment, change map.topo file to create a poor network. After
+downloading finished, check the hash of each chunk and the whole file.
+
+4. concurrent download test
+Set A and B have a different part of a file, set C download file from A and
+B, C will combine the chunks from A and B together to create a whole file,
+check the hash of each chunk and the whole file.
+
+5. congestion control test
+Write log to a file to record each change on the window size.
+
+6. crash test
+Make A download concurrently from B and C, and D is idle, terminate B, after
+a timeout, A can automatically release the connection between B, and then flooding
+WHOHAS packet, which led A to download from D.
+
+7. NULL pointer detection
+Detect NULL pointer for most cases
+
+8. packet validation
+Before process packet from network, first validate the packet make sure it will
+not crash the program.
